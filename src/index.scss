@@ -1,0 +1,15 @@
+@use 'styles/typography' as *;
+@import 'styles/reset';
+
+body {
+	margin: 0;
+	font-family: $ff-primary, 'Roboto';
+	font-size: $fs-text-primary;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow: hidden;
+}
+
+code {
+	font-family: Consolas;
+}
