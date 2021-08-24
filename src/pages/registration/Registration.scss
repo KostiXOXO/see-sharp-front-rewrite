@@ -1,0 +1,13 @@
+@use 'styles/mixins/centerForm' as *;
+@use 'styles/colors' as *;
+
+.registration {
+	@include centerForm();
+
+	.msgBox {
+		max-width: calc(30vw - 6rem);
+	}
+	.errorMessage {
+		color: $clr-error;
+	}
+}

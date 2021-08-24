@@ -1,0 +1,9 @@
+@mixin linksStyleNone {
+	a {
+		&:link,
+		&:active,
+		&:visited {
+			text-decoration: none;
+		}
+	}
+}

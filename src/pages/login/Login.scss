@@ -1,0 +1,22 @@
+@use 'styles/mixins/centerForm' as *;
+@use 'styles/colors' as *;
+
+.login {
+	@include centerForm();
+
+	.msgBox {
+		max-width: calc(30vw - 6rem);
+	}
+	.errorMessage {
+		color: $clr-error;
+	}
+	.socialLogin {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		&__bottomText {
+			padding-right: 1rem;
+		}
+	}
+}

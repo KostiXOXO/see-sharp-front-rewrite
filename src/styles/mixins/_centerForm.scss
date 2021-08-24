@@ -1,0 +1,77 @@
+@use 'styles/colors' as *;
+@use 'styles/utils' as *;
+@use 'styles/typography' as *;
+@use 'styles/variables' as *;
+
+@mixin centerForm() {
+	display: flex;
+	justify-content: center;
+
+	.mainFrame {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid $clr-text-placeholder;
+		border-radius: $border-radius;
+		padding: 3rem;
+		gap: 1rem;
+		min-width: 30vw;
+		margin-top: 5rem;
+		@media only screen and (max-width: $mobileScreen) {
+			border: none;
+			margin-top: 1rem;
+		}
+		span {
+			padding-left: 0.25rem;
+		}
+
+		&__header {
+			color: $clr-text-dark;
+
+			display: flex;
+			align-items: center;
+
+			&__title {
+				h3 {
+					font-weight: $fw-regular;
+					font-size: x-large;
+					padding-right: 0.5rem;
+					margin-right: 0.5em;
+				}
+			}
+		}
+
+		&__body {
+			display: inherit;
+			flex-direction: inherit;
+			gap: inherit;
+
+			&__privacyPolicy {
+				display: inherit;
+				align-items: center;
+				gap: inherit;
+				input {
+					height: 2rem;
+					margin-left: 0.5rem;
+				}
+			}
+
+			&__form {
+				display: inherit;
+				flex-direction: inherit;
+				gap: inherit;
+
+				input {
+					all: unset;
+					border: 1px solid $clr-text-placeholder;
+					border-radius: 20px;
+					height: 2.5em;
+					padding-left: 1em;
+				}
+			}
+		}
+	}
+
+	a {
+		color: $clr-primary-light;
+	}
+}

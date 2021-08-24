@@ -1,0 +1,13 @@
+@use 'styles/colors' as *;
+
+.mainItem {
+	background-color: $clr-section;
+}
+
+.subItem {
+	background-color: $clr-subsection;
+
+	:hover {
+		background-color: $clr-subsection-hover;
+	}
+}

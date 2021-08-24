@@ -2,14 +2,14 @@
 @import 'styles/reset';
 
 body {
-	margin: 0;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
 	font-family: $ff-primary, 'Roboto';
 	font-size: $fs-text-primary;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
 	overflow: hidden;
-}
 
-code {
-	font-family: Consolas;
+	code {
+		font-family: Consolas;
+	}
 }

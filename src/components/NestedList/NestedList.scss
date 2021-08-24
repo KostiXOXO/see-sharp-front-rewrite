@@ -1,0 +1,14 @@
+@use 'styles/colors' as *;
+
+.nestedListContainer {
+	padding: 1rem;
+	max-width: 300px;
+
+	& > ul > div {
+		background: $clr-section;
+
+		& > div {
+			background: $clr-subsection;
+		}
+	}
+}

@@ -1,0 +1,145 @@
+@use 'styles/colors' as *;
+@use 'styles/mixins/customScroll' as *;
+@use 'styles/mixins/linksStyleNone' as *;
+@use 'styles/variables' as *;
+
+.landingPage {
+	@include customScroll();
+	@include linksStyleNone();
+	height: 100vh;
+	.mainFrame {
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		background: url('/assets/landing_page_bg.jpg');
+		color: $clr-header-light;
+		font-weight: 300;
+		min-height: 100%;
+		width: 100vw;
+
+		&__contentArea {
+			@media only screen and (max-width: $mobileScreen) {
+				width: 100%;
+				padding: 2rem 1rem 1rem 1rem;
+				gap: 1rem;
+			}
+			@media only screen and (max-width: ($mobileScreen + 380px)) {
+				width: 100%;
+			}
+
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+			font-weight: 100;
+			gap: 2rem;
+			justify-content: center;
+			padding: 5rem;
+			width: 50%;
+
+			span {
+				text-align: center;
+			}
+			h1 {
+				all: unset;
+				letter-spacing: 0.35rem;
+				font-size: 3.5rem;
+				display: flex;
+				flex-direction: column;
+				text-align: center;
+				width: 100%;
+				gap: 1rem;
+				span:last-of-type {
+					font-weight: 600;
+				}
+			}
+
+			img {
+				width: 100px;
+				height: auto;
+			}
+
+			.encourage {
+				letter-spacing: 0.1rem;
+				line-height: 1.5;
+				font-size: 1.25rem;
+				max-width: 70%;
+			}
+
+			.startNowButton {
+				background: #fff;
+				color: $clr-text-dark;
+				font-weight: 400;
+				transition: 0.3s ease-in-out;
+				width: 15rem;
+
+				&:hover {
+					box-shadow: 0 0 0.7rem #fff;
+					transition: 0.3s ease-in-out;
+				}
+			}
+		}
+	}
+
+	.furtherContent {
+		background: $clr-landing-bg;
+		border-top: 1px solid $clr-header-light;
+		color: $clr-text-light;
+		font-weight: 300;
+		padding: 5rem;
+		width: 100vw;
+		@media only screen and (max-width: $mobileScreen) {
+			padding: 1rem;
+		}
+		display: flex;
+		flex-direction: column;
+
+		.whatWeOffer {
+			display: grid;
+			grid-auto-flow: column;
+			@media only screen and (max-width: 1000px) {
+				grid-auto-flow: row;
+				gap: 2rem;
+			}
+
+			gap: 5rem;
+
+			& > * {
+				border: 1px solid $clr-header-light;
+				padding: 3rem;
+				@media only screen and (max-width: $mobileScreen) {
+					border: none;
+					margin: 0;
+					padding: 1rem 2rem 2rem 1rem;
+					width: 100vw;
+				}
+				border-radius: 10px;
+				height: auto;
+				& > * {
+					line-height: 1.5;
+				}
+
+				h3 {
+					color: $clr-header-light;
+					font-size: 2.25rem;
+					font-weight: 300;
+					letter-spacing: 0.1rem;
+					width: 70%;
+				}
+
+				ul > li {
+					font-size: 1.25rem;
+					margin-bottom: 1rem;
+					position: relative;
+				}
+
+				ul > li::before {
+					color: $clr-header-light;
+					content: '\276F';
+					inset: 0;
+					margin-left: -1.5rem;
+					position: absolute;
+				}
+			}
+		}
+	}
+}
