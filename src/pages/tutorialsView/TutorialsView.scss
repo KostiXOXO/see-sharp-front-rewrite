@@ -1,15 +1,17 @@
 .tutorialsView{
     
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .sectionsList{
 
     width: auto;
+    //position: fixed;
 }
 
 .subsectionView{
 
     padding: 1rem;
+    //position: relative;
 }

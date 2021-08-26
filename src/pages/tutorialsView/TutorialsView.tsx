@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { get } from 'utils/web/webMethods/adapters';
 import { SectionsList } from './sectionsList';
 import { Section } from './sectionsList/common';
+import { SubsectionView } from './subsectionView';
 import './TutorialsView.scss';
 
 const TutorialsView = (): JSX.Element => {
@@ -21,7 +22,9 @@ const TutorialsView = (): JSX.Element => {
 					<SectionsList sections={sections} />
 				</div>
 			</div>
-			<div className="subsectionView">subsection View</div>
+			<div className="subsectionView">
+				<SubsectionView />
+			</div>
 		</div>
 	);
 };
