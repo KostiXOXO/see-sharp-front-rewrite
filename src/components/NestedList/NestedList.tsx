@@ -11,7 +11,7 @@ const NestedList = ({ items }: { items: NestedListItemProp[] }): JSX.Element => 
 			<ThemeProvider>
 				<List>
 					{items.map((item, key) => {
-						return <NestedListItem key={key} item={item} level={0} />;
+						return <NestedListItem key={key} item={item} />;
 					})}
 				</List>
 			</ThemeProvider>

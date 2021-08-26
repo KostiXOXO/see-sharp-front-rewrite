@@ -6,7 +6,7 @@ import { List, ListItem, Collapse } from '@material-ui/core';
 import './NestedListItem.scss';
 import { ThemeProvider } from 'utils/helpers';
 
-const NestedListItem = ({ item, level = 0 }: { item: NestedListItemProp; level: number }): JSX.Element => {
+const NestedListItem = ({ item }: { item: NestedListItemProp }): JSX.Element => {
 	const [open, setOpen] = React.useState(true);
 
 	const handleClick = () => {
@@ -18,14 +18,14 @@ const NestedListItem = ({ item, level = 0 }: { item: NestedListItemProp; level: 
 			<div>
 				<ListItem button onClick={handleClick}>
 					{item.name}
-					{item.subItems && (open ? <ExpandLess /> : <ExpandMore />)}
+					{item.tutorials && (open ? <ExpandLess /> : <ExpandMore />)}
 				</ListItem>
 
-				{item.subItems && (
+				{item.tutorials && (
 					<Collapse in={open} timeout="auto" unmountOnExit>
 						<List>
-							{item.subItems.map((subItem, key) => {
-								return <NestedListItem key={key} item={subItem} level={level + 1} />;
+							{item.tutorials.map((tutorial, key) => {
+								return <NestedListItem key={key} item={tutorial} />;
 							})}
 						</List>
 					</Collapse>
