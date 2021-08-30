@@ -1,0 +1,10 @@
+@use 'styles/colors' as *;
+
+.messageBox {
+	.msgBox {
+		color: $clr-message;
+	}
+	.msgBoxError {
+		color: $clr-error;
+	}
+}

@@ -6,6 +6,7 @@ import { Registration } from 'pages/auth/registration';
 import { Test } from 'pages/tutorialsView/Test/Test';
 import { ForgotPassword } from 'pages/auth/forgotpassword/ForgotPassword';
 import { VerifyEmail } from 'pages/auth/verifyEmail/VerifyEmail';
+import { ChangePassword } from 'pages/auth/changePassword/ChangePassword';
 
 const routes: IRoute[] = [
 	{
@@ -34,6 +35,13 @@ const routes: IRoute[] = [
 		exact: true,
 		component: ForgotPassword,
 		name: 'Forgot Password Page',
+		protected: false,
+	},
+	{
+		path: '/account/changepassword/:guid',
+		exact: true,
+		component: ChangePassword,
+		name: 'Change Password Page',
 		protected: false,
 	},
 	{

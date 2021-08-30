@@ -1,4 +1,4 @@
-import { IRegisterData, IGoogleLoginData, ILoginData } from 'utils/interfaces/auth';
+import { IRegisterData, IGoogleLoginData, ILoginData, IPasswordChange } from 'utils/interfaces/auth';
 import { get, post, put } from './adapters';
 
 const getCurrentUser = async () => {
@@ -38,8 +38,26 @@ const forgotPassword = async (emailAddress: string) => {
 	await post('/api/account/forgotpassword', { emailAddress });
 };
 
+const resetPassword = async ({
+	password,
+	passwordRetyped,
+	changePasswordGuid,
+}: IPasswordChange & { changePasswordGuid: string }) => {
+	const data = { newPassword: password, retypedNewPassword: passwordRetyped, changePasswordGuid };
+	await put('/api/account/passwordreset', data);
+};
+
 const getTutorialsList = async () => {
 	return await get('/api/tutorials');
 };
 
-export { getCurrentUser, registerUser, loginUser, loginThroughtGoogle, getTutorialsList, forgotPassword, verifyEmail };
+export {
+	getCurrentUser,
+	registerUser,
+	loginUser,
+	loginThroughtGoogle,
+	getTutorialsList,
+	forgotPassword,
+	verifyEmail,
+	resetPassword,
+};
