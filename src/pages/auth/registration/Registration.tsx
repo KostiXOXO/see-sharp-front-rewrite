@@ -1,6 +1,8 @@
+import { Checkbox } from '@material-ui/core';
 import { BaseButton } from 'components/baseButton';
 import React, { useReducer } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import PickersProvider from 'utils/helpers/ThemeProvider';
 import { IRegisterData } from 'utils/interfaces/auth';
 import { AuthService } from 'utils/services/AuthService';
 import './Registration.scss';
@@ -36,11 +38,11 @@ const reducer = (state = initialFormState, action: IState) => {
 
 const Registration = () => {
 	const { register } = AuthService();
-
+	const history = useHistory();
 	const [state, dispatch] = useReducer(reducer, initialFormState);
 
 	const registerWithEmail = async ({ username, password, passwordRetyped, email }: IRegisterData) => {
-		await register({ username, password, passwordRetyped, email }).catch((err) => console.log(err));
+		await register({ username, password, passwordRetyped, email }, history).catch((err) => console.log(err));
 	};
 
 	const handleRegister = () => {
@@ -101,7 +103,14 @@ const Registration = () => {
 						)}
 					</div> */}
 					<div className="mainFrame__body__privacyPolicy">
-						<input type="checkbox" />
+						<PickersProvider>
+							<Checkbox
+								checked={true}
+								onChange={() => {
+									return 0;
+								}}
+							/>
+						</PickersProvider>
 						<span>
 							I accept the <a>privacy policy</a>.
 						</span>

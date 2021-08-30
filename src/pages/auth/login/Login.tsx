@@ -1,6 +1,6 @@
 import { BaseButton } from 'components/baseButton';
 import React, { useReducer } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { ILoginData } from 'utils/interfaces/auth';
 import { AuthService } from 'utils/services/AuthService';
 import { GoogleLoginButton } from './components/googleLogin/GoogleLoginButton';
@@ -31,11 +31,13 @@ const reducer = (state = initialFormState, action: IState) => {
 
 const Login = (): JSX.Element => {
 	const { login } = AuthService();
-
+	const history = useHistory();
 	const [state, dispatch] = useReducer(reducer, initialFormState);
 
 	const loginWithEmail = async ({ email, password }: ILoginData) => {
-		await login({ email, password }).catch((err) => console.log(err));
+		await login({ email, password })
+			.then(() => history.push('/'))
+			.catch((err) => console.log(err));
 	};
 
 	const handleLogin = () => {

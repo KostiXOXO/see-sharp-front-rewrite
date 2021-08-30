@@ -6,6 +6,8 @@ interface IGoogleLoginData {
 	emailAddress: string;
 	username: string;
 	googleId: string;
+	name: string;
+	surname: string;
 }
 
 interface IRegisterData {

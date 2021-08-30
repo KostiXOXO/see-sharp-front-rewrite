@@ -1,35 +1,45 @@
 import { IRegisterData, IGoogleLoginData, ILoginData } from 'utils/interfaces/auth';
-import { get, post } from './adapters';
+import { get, post, put } from './adapters';
 
 const getCurrentUser = async () => {
-	const userData = await get('/api/account/me');
-	return userData;
+	return await get('/api/account/me');
 };
 
 const loginUser = async ({ email, password }: ILoginData) => {
-	const loginResponseData = await post('/api/account/login', { email, password });
-	return loginResponseData;
+	return await post('/api/account/login', { emailAddress: email, password });
 };
 
-const loginThroughtGoogle = async ({ emailAddress, username, googleId }: IGoogleLoginData) => {
+const loginThroughtGoogle = async ({ emailAddress, username, googleId, name, surname }: IGoogleLoginData) => {
 	const data = {
 		emailAddress,
 		username,
 		googleId,
+		name,
+		surname,
 	};
-	const loginResponseData = await post('/api/account/login/google', data);
 
-	return loginResponseData;
+	return await post('/api/account/login/google', data);
 };
 
 const registerUser = async ({ username, password, passwordRetyped, email }: IRegisterData) => {
-	const registerResponseData = await post('/api/account/register', { username, password, passwordRetyped, email });
-	return registerResponseData;
+	return await post('/api/account/register', {
+		userName: username,
+		password,
+		retypedPassword: passwordRetyped,
+		emailAddress: email,
+	});
+};
+
+const verifyEmail = async (guid: string) => {
+	return await put(`/api/account/verify/${guid}`, {});
+};
+
+const forgotPassword = async (emailAddress: string) => {
+	await post('/api/account/forgotpassword', { emailAddress });
 };
 
 const getTutorialsList = async () => {
-	const tutorialsList = await get('/api/tutorials');
-	return tutorialsList;
+	return await get('/api/tutorials');
 };
 
-export { getCurrentUser, registerUser, loginUser, loginThroughtGoogle, getTutorialsList };
+export { getCurrentUser, registerUser, loginUser, loginThroughtGoogle, getTutorialsList, forgotPassword, verifyEmail };
