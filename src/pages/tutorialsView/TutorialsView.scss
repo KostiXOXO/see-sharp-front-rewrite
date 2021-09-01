@@ -1,17 +1,31 @@
+@import '../../styles/mixins/customScroll';
+@import '../../styles/typography';
+@import '../../styles/colors';
+
 .tutorialsView{
     
+    font-weight: $fw-light;
+    height: 90vh;
     display: flex;
-    flex-direction: row;
-}
+    flex: 1 1 100%;
+    gap: 1rem;
 
-.sectionsList{
+    .sectionsList{
 
-    width: auto;
-    //position: fixed;
-}
+        background: $clr-subsection;
+        @include customScroll();
+        max-width: 20vw;
+    }
+    
+    .subsectionView{
 
-.subsectionView{
+        padding-top: 2rem;
+        padding-right: 1rem;
+    
+        @include customScroll();
+        min-width: 80vw;
 
-    padding: 1rem;
-    //position: relative;
+        flex-direction: column;
+        flex: 1 1 80vw;
+    }
 }

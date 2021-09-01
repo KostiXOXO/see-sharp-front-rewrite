@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { default as Md } from 'react-markdown';
+import './MarkdownCompiler.scss';
 
 interface IProps {
 	markdown: string;
@@ -42,19 +43,21 @@ const MarkdownCompiler = ({ markdown }: IProps) => {
 		// 	components={components}
 		// />
 
-		<Md
-			// eslint-disable-next-line react/no-children-prop
-			children={markdown
-				.split('    ')
-				.map((item) => {
-					isCode = item[0] === '~' ? !isCode : isCode;
-					return isCode ? '   ' + item : item;
-				})
-				.join('')}
-			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-			/* @ts-ignore */
-			components={components}
-		/>
+		<div className="mdContent">
+			<Md
+				// eslint-disable-next-line react/no-children-prop
+				children={markdown
+					.split('    ')
+					.map((item) => {
+						isCode = item[0] === '~' ? !isCode : isCode;
+						return isCode ? '   ' + item : item;
+					})
+					.join('')}
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				/* @ts-ignore */
+				components={components}
+			/>
+		</div>
 	);
 };
 
