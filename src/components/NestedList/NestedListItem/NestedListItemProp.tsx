@@ -1,1 +1,1 @@
-export type NestedListItemProp = { name: string; subItems?: NestedListItemProp[] };
+export type NestedListItemProp = { name: string; tutorials?: NestedListItemProp[] };

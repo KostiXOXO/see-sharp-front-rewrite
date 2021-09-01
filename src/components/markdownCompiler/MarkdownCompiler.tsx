@@ -31,13 +31,28 @@ const components = {
 };
 
 const MarkdownCompiler = ({ markdown }: IProps) => {
+	let isCode = false;
 	return (
+		// <Md
+		// 	// eslint-disable-next-line react/no-children-prop
+		// 	children={markdown}
+		// 	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// 	/* @ts-ignore */
+		// 	// eslint-disable-next-line react/prop-types
+		// 	components={components}
+		// />
+
 		<Md
 			// eslint-disable-next-line react/no-children-prop
-			children={markdown}
+			children={markdown
+				.split('    ')
+				.map((item) => {
+					isCode = item[0] === '~' ? !isCode : isCode;
+					return isCode ? '   ' + item : item;
+				})
+				.join('')}
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			/* @ts-ignore */
-			// eslint-disable-next-line react/prop-types
 			components={components}
 		/>
 	);

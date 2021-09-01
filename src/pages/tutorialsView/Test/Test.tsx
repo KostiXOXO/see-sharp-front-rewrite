@@ -22,7 +22,7 @@ const Test = (): JSX.Element => {
 		(async () => {
 			const sections = await get('/api/tutorial/section')
 				.then((res) => {
-					console.log(res);
+					//console.log(res.data);
 					return res.data.map((section: ISection) =>
 						section.tutorials.map((tutorial: ITutorial) => tutorial)
 					);
