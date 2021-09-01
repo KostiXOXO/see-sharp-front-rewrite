@@ -1,0 +1,16 @@
+@use 'styles/mixins/centerForm' as *;
+@use 'styles/colors' as *;
+@use 'styles/variables' as *;
+
+.verify {
+	@include centerForm();
+
+	.msgBox {
+		.errorMessage {
+			color: $clr-error;
+		}
+		.verifiedMessage {
+			color: $clr-message;
+		}
+	}
+}

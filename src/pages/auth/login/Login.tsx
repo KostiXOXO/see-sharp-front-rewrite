@@ -1,6 +1,6 @@
 import { BaseButton } from 'components/baseButton';
-import React, { useReducer } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useReducer, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { ILoginData } from 'utils/interfaces/auth';
 import { AuthService } from 'utils/services/AuthService';
 import { GoogleLoginButton } from './components/googleLogin/GoogleLoginButton';
@@ -31,11 +31,18 @@ const reducer = (state = initialFormState, action: IState) => {
 
 const Login = (): JSX.Element => {
 	const { login } = AuthService();
-
+	const history = useHistory();
 	const [state, dispatch] = useReducer(reducer, initialFormState);
 
+	const [message, setMessage] = useState<string[] | null>(null);
+
 	const loginWithEmail = async ({ email, password }: ILoginData) => {
-		await login({ email, password }).catch((err) => console.log(err));
+		setMessage(null);
+		await login({ email, password })
+			.then(() => history.push('/'))
+			.catch(() => {
+				setMessage(['Invalid email or password']);
+			});
 	};
 
 	const handleLogin = () => {
@@ -65,7 +72,7 @@ const Login = (): JSX.Element => {
 							onChange={(e) => dispatch({ type: 'SET_PASSWORD', value: e.target.value })}
 						/>
 					</div>
-					{/* <div className="messageBox">
+					<div className="messageBox">
 						{message && (
 							<div className="msgBox">
 								{message.map((msg, key) => {
@@ -77,7 +84,7 @@ const Login = (): JSX.Element => {
 								})}
 							</div>
 						)}
-					</div> */}
+					</div>
 					<BaseButton style="filled" text="Login" onClick={handleLogin} />
 					<span>
 						<Link to="/forgotpassword" replace={location.pathname === '/forgotpassword'}>

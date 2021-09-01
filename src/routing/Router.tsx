@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Route, RouteComponentProps, Switch } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Redirect, Route, RouteComponentProps, Switch } from 'react-router-dom';
 import { LocalStorageService } from 'utils/services';
 import { getCurrentUser } from 'utils/web/webMethods/requests';
 import { useRecoilState } from 'recoil';
@@ -9,13 +9,11 @@ import { PrivateRoute } from 'utils/web/routeExtensions/PrivateRoute';
 
 const RouterSwitch = ({ children }: { children?: JSX.Element }): JSX.Element => {
 	const storage = LocalStorageService();
-	// const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 	const [userData, setUserData] = useRecoilState(userLoginData);
 
 	useEffect(() => {
 		(async () => {
 			const token = storage.get('authToken');
-			// setIsLoggedIn(!!token);
 			if (token) {
 				const { data } = await getCurrentUser();
 				return setUserData(
@@ -25,7 +23,7 @@ const RouterSwitch = ({ children }: { children?: JSX.Element }): JSX.Element => 
 					})
 				);
 			}
-			return;
+			return <Redirect to="/" />;
 		})();
 	}, []);
 

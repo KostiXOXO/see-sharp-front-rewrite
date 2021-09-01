@@ -6,6 +6,8 @@ interface IGoogleLoginData {
 	emailAddress: string;
 	username: string;
 	googleId: string;
+	name: string;
+	surname: string;
 }
 
 interface IRegisterData {
@@ -15,4 +17,9 @@ interface IRegisterData {
 	email: string;
 }
 
-export type { ILoginData, IGoogleLoginData, IRegisterData };
+interface IPasswordChange {
+	password: string;
+	passwordRetyped: string;
+}
+
+export type { ILoginData, IGoogleLoginData, IRegisterData, IPasswordChange };
