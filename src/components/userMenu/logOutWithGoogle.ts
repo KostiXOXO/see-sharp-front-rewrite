@@ -18,7 +18,7 @@ const logOutWithGoogle = () => {
 					JWT: '',
 				})
 			);
-			history.replace('/');
+			history.replace('/login');
 			return null;
 		},
 

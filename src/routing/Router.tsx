@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Redirect, Route, RouteComponentProps, Switch, useHistory } from 'react-router-dom';
 import { LocalStorageService } from 'services';
 import { getCurrentUser } from 'web/webMethods/requests/users';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { userLoginData } from 'utils/store/atoms';
 import { routes } from '.';
 import { PrivateRoute } from 'web/routeExtensions/PrivateRoute';
@@ -14,7 +14,8 @@ const RouterSwitch = ({ children }: { children?: JSX.Element }): JSX.Element => 
 	const storage = LocalStorageService();
 	const [userData, setUserData] = useRecoilState(userLoginData);
 	const [token] = useToken();
-	const isUserLoggedIn = !!token;
+	const { isLoggedIn, username } = useRecoilValue(userLoginData);
+
 	const history = useHistory();
 	useEffect(() => {
 		(async () => {
@@ -35,7 +36,7 @@ const RouterSwitch = ({ children }: { children?: JSX.Element }): JSX.Element => 
 	return (
 		<div className="app">
 			<div className="app__header">
-				{history.location.pathname !== '/' && <Header isUserLoggedIn={isUserLoggedIn} />}
+				{history.location.pathname !== '/' && <Header isUserLoggedIn={isLoggedIn} />}
 			</div>
 			<div className="app__body">
 				<Switch>

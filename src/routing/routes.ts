@@ -56,7 +56,7 @@ const routes: IRoute[] = [
 		exact: true,
 		component: TutorialsView,
 		name: 'Tutorials Page',
-		protected: false,
+		protected: true,
 	},
 	{
 		path: '/excercises',
