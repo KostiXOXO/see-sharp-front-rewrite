@@ -2,7 +2,7 @@ import { BaseButton } from 'components/baseButton';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { validateEmail } from 'utils/helpers/validation';
-import { AuthService } from 'utils/services';
+import { AuthService } from 'services';
 import './ForgotPassword.scss';
 
 const ForgotPassword = () => {

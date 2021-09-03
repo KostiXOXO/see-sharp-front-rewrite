@@ -1,5 +1,5 @@
 import { IRegisterData } from 'utils/interfaces/auth';
-import { registerUser } from 'utils/web/webMethods/requests';
+import { registerUser } from 'web/webMethods/requests/auth';
 
 async function Register({ username, password, passwordRetyped, email }: IRegisterData, history: any) {
 	const userRegistrationData = {

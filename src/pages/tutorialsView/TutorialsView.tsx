@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { get } from 'utils/web/webMethods/adapters';
+import { get } from 'web/webMethods/adapters';
 import { SectionsList } from './sectionsList';
 import { Section, Tutorial } from './sectionsList/common';
 import { SubsectionView } from './subsectionView';

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LocalStorageService } from 'utils/services';
+import { LocalStorageService } from 'services';
 
 export const useToken = () => {
 	const storage = LocalStorageService();

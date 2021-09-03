@@ -1,4 +1,4 @@
-import { forgotPassword } from 'utils/web/webMethods/requests';
+import { forgotPassword } from 'web/webMethods/requests/auth';
 
 async function Reset(email: string) {
 	try {

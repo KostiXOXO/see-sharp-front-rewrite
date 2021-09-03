@@ -4,7 +4,7 @@ import React, { useReducer } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import PickersProvider from 'utils/helpers/ThemeProvider';
 import { IRegisterData } from 'utils/interfaces/auth';
-import { AuthService } from 'utils/services';
+import { AuthService } from 'services';
 import './Registration.scss';
 
 type TStateAction = 'SET_USERNAME' | 'SET_PASSWORD' | 'SET_PASSWORD_RETYPED' | 'SET_EMAIL';

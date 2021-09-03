@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Redirect, Route, RouteComponentProps, Switch } from 'react-router-dom';
-import { LocalStorageService } from 'utils/services';
-import { getCurrentUser } from 'utils/web/webMethods/requests';
+import { LocalStorageService } from 'services';
+import { getCurrentUser } from 'web/webMethods/requests/users';
 import { useRecoilState } from 'recoil';
 import { userLoginData } from 'utils/store/atoms';
 import { routes } from '.';
-import { PrivateRoute } from 'utils/web/routeExtensions/PrivateRoute';
+import { PrivateRoute } from 'web/routeExtensions/PrivateRoute';
 
 const RouterSwitch = ({ children }: { children?: JSX.Element }): JSX.Element => {
 	const storage = LocalStorageService();

@@ -1,5 +1,5 @@
 import { ILoginData } from 'utils/interfaces';
-import { loginUser } from 'utils/web/webMethods/requests';
+import { loginUser } from 'web/webMethods/requests/auth';
 import { LocalStorageService } from '..';
 
 async function Login({ email, password }: ILoginData): Promise<string | null> {
