@@ -37,13 +37,13 @@ async function reset(email: string) {
 			})
 			.catch((err) => {
 				if (err.response.status >= 500) {
-					return ['Server is probably down'];
+					return ['Unexpected error has occured, try refreshing page or contact admin'];
 				} else {
 					return null;
 				}
 			});
 	} catch (error) {
-		return ['Unexpected error has occured, try refreshing page or contact admin'];
+		return ['Server is probably down'];
 	}
 }
 

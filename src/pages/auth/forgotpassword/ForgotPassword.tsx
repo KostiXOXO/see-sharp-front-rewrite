@@ -13,13 +13,18 @@ const ForgotPassword = () => {
 
 	const handleResetPassword = async () => {
 		if (validateEmail(email)) {
-			await reset(email).then((res: string[] | null) => {
-				if (res) {
-					setError(res);
-				} else {
-					setMessage(['Email with new password was just sent!']);
-				}
-			});
+			try {
+				await reset(email).then((res: string[] | null) => {
+					if (res) {
+						setError(res);
+					} else {
+						setMessage(['Email with new password was just sent!']);
+					}
+				});
+			} catch (err) {
+				//moze się sypnąć
+				setError([err]);
+			}
 		} else {
 			setError(['Email is not valid, check if You spelled it correctly..']);
 		}
