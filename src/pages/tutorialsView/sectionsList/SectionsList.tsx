@@ -5,12 +5,20 @@ import { SectionsListItem } from './sectionsListItem';
 import './SectionsList.scss';
 import { FolderOpen } from '@material-ui/icons';
 
-const SectionsList = ({ sections, foo }: { sections: Section[]; foo: any }): JSX.Element => {
+const SectionsList = ({
+	sections,
+	handleActiveSubsection,
+}: {
+	sections: Section[];
+	handleActiveSubsection: any;
+}): JSX.Element => {
 	return (
 		<div>
 			<List>
 				{sections.map((section, key) => {
-					return <SectionsListItem key={key} section={section} foo={foo} />;
+					return (
+						<SectionsListItem key={key} section={section} handleActiveSubsection={handleActiveSubsection} />
+					);
 				})}
 			</List>
 		</div>

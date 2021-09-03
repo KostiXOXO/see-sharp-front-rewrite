@@ -6,9 +6,40 @@
 	font-family: $ff-tutorials;
 	line-height: 1.5rem;
 
+	h1 {
+		font-size: x-large;
+		font-weight: $fw-regular;
+		font-family: $ff-primary;
+		margin-top: 2rem;
+	}
+
 	strong {
 		color: $clr-header-dark;
 		font-weight: $fw-bold;
 		font-family: 'Courier New', Courier, monospace;
+	}
+
+	a {
+		color: $clr-primary-dark;
+		font-weight: $fw-regular;
+		text-decoration: none;
+
+		&:visited {
+			text-decoration: none;
+		  }
+		
+		  &:hover {
+			font-weight: $fw-bold;
+		  }
+	}
+
+	img {
+
+		width: 70vw;
+		padding-top: 1rem;
+	}
+
+	.language-csharp {
+		font-size: medium !important;
 	}
 }

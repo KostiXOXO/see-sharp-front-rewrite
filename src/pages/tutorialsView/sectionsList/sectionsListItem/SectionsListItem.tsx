@@ -5,17 +5,23 @@ import { List, ListItem, Collapse } from '@material-ui/core';
 import { ThemeProvider } from 'utils/helpers';
 import './SectionsListItem.scss';
 
-const SectionsListItem = ({ section, foo }: { section: Section; foo: any }): JSX.Element => {
+const SectionsListItem = ({
+	section,
+	handleActiveSubsection,
+}: {
+	section: Section;
+	handleActiveSubsection: any;
+}): JSX.Element => {
 	const [open, setOpen] = React.useState(true);
-	const [activeSubsection, setActiveSubsection] = React.useState<Tutorial | undefined>(undefined);
+	//const [activeSubsection, setActiveSubsection] = React.useState<Tutorial | undefined>(undefined);
 
 	const handleSectionClick = () => {
 		setOpen(!open);
 	};
 
 	const handleSubsectionClick = (tutorial: Tutorial) => {
-		setActiveSubsection(tutorial);
-		foo();
+		//setActiveSubsection(tutorial);
+		handleActiveSubsection(tutorial.id);
 	};
 
 	return (
