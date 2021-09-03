@@ -6,7 +6,9 @@
 .landingPage {
 	@include customScroll();
 	@include linksStyleNone();
+	// height: max(calc(100vh - 5rem), 92vh);
 	height: 100vh;
+
 	.mainFrame {
 		background-position: center;
 		background-repeat: no-repeat;

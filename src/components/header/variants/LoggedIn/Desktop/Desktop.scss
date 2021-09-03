@@ -1,0 +1,14 @@
+.desktop {
+	.headerContent {
+		.navMenu {
+			display: flex;
+			gap: 2rem;
+
+			.menu {
+				display: flex;
+				gap: 1rem;
+				align-items: center;
+			}
+		}
+	}
+}

@@ -6,4 +6,9 @@ interface IRoute {
 	protected: boolean;
 }
 
-export type { IRoute };
+interface INavRoute {
+	path: string;
+	text: string;
+}
+
+export type { IRoute, INavRoute };

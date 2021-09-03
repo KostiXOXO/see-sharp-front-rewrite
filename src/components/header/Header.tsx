@@ -1,16 +1,9 @@
 import React from 'react';
+import { HeaderLoggedIn, HeaderNotLoggedIn } from '.';
 import './Header.scss';
-import { HeaderLoggedIn, HeaderNotLoggedIn, HeaderMobile } from '.';
-import useWindowDimensions from 'utils/hooks/useWindowDimension';
-import { useToken } from 'utils/hooks/useAuthToken';
 
-const Header = () => {
-	const { winWidth } = useWindowDimensions();
-	const isMobileView = winWidth < 720;
-	const [token] = useToken();
-	const isUserLoggedIn = !!token;
-
-	return isUserLoggedIn ? isMobileView ? <HeaderMobile /> : <HeaderLoggedIn /> : <HeaderNotLoggedIn />;
+const Header = ({ isUserLoggedIn }: { isUserLoggedIn: boolean }) => {
+	return <nav>{isUserLoggedIn ? <HeaderLoggedIn /> : <HeaderNotLoggedIn />}</nav>;
 };
 
 export { Header };
