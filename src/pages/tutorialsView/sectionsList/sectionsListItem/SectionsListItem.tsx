@@ -5,17 +5,23 @@ import { List, ListItem, Collapse } from '@material-ui/core';
 import { ThemeProvider } from 'utils/helpers';
 import './SectionsListItem.scss';
 
-const SectionsListItem = ({ section }: { section: Section }): JSX.Element => {
+const SectionsListItem = ({ section, foo }: { section: Section; foo: any }): JSX.Element => {
 	const [open, setOpen] = React.useState(true);
+	const [activeSubsection, setActiveSubsection] = React.useState<Tutorial | undefined>(undefined);
 
-	const handleClick = () => {
+	const handleSectionClick = () => {
 		setOpen(!open);
+	};
+
+	const handleSubsectionClick = (tutorial: Tutorial) => {
+		setActiveSubsection(tutorial);
+		foo();
 	};
 
 	return (
 		<ThemeProvider>
 			<div>
-				<ListItem button onClick={handleClick}>
+				<ListItem button onClick={handleSectionClick}>
 					{section.name}
 					{section.tutorials && (open ? <ExpandLess /> : <ExpandMore />)}
 				</ListItem>
@@ -25,7 +31,7 @@ const SectionsListItem = ({ section }: { section: Section }): JSX.Element => {
 						<List>
 							{section.tutorials.map((tutorial: Tutorial, key: any) => {
 								return (
-									<ListItem button key={key}>
+									<ListItem button key={key} onClick={() => handleSubsectionClick(tutorial)}>
 										{tutorial.name}
 									</ListItem>
 								);

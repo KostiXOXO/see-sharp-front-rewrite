@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { default as Md } from 'react-markdown';
+import './MarkdownCompiler.scss';
 
 interface IProps {
 	markdown: string;

@@ -1,0 +1,15 @@
+@import '../../styles/typography';
+@import '../../styles/colors';
+
+.mdContent {
+    
+    color: $clr-text-dark;
+    font-family: $ff-tutorials;
+    line-height: 1.5rem;
+
+    strong {
+        color: $clr-header-dark;
+        font-weight: $fw-bold;
+        font-family: 'Courier New', Courier, monospace;
+    }
+}

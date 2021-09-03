@@ -31,8 +31,7 @@ const tutorial = {
 		},
 		{
 			title: 'Multi-line Comments',
-			content: `Single-line comment begins with two forward slashes ( **//** ) and applies to the end of the current line. 
-            Any text in this area is ignored by C# compiler and will not be executed.
+			content: `Multi-line comment begins with **/\*** and ends with **\*/**. Any text between will not be executed.
             ~~~csharp
             using System;
             
@@ -55,7 +54,7 @@ const tutorial = {
 		{
 			title: 'XML Comments',
 			content: `
-            XML comment starts with three forward slashes (**///** ) proceeded by an XML tag with its content. 
+            XML comment starts with three forward slashes ( **///** ) proceeded by an XML tag with its content. 
             Using these comments you can explain each part of your program more precisely and generate an XML document 
             describing the source code.
             For now, we will not be using many of these since we are going to keep our examples short, 
@@ -77,7 +76,7 @@ const tutorial = {
             }
         ~~~
 
-        #### XML Comments tags you can use:
+        XML Comments tags you can use:
 
         + **<code>** - marking a multi-line piece of a comment as code
         + **<c>** - marking a piece of a comment as code
@@ -105,13 +104,13 @@ const tutorial = {
 const SubsectionView = () => {
 	return (
 		<div>
-			<h1>{tutorial.title}</h1>
-			<h3>{tutorial.description}</h3>
+			<h3>{tutorial.title}</h3>
+			<p className="description">{tutorial.description}</p>
 			<div>
 				{tutorial.paragraphs.map((paragraph) => {
 					return (
 						// eslint-disable-next-line react/jsx-key
-						<div>
+						<div className="paragraph">
 							<h4>{paragraph.title}</h4>
 							<MarkdownCompiler markdown={paragraph.content} />
 						</div>

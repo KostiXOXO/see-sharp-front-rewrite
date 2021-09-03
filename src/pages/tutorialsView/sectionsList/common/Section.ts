@@ -1,6 +1,7 @@
 import { Tutorial } from './Tutorial';
 
 export interface ISection {
+	id: number;
 	name: string;
 	tutorials: Tutorial[];
 }
