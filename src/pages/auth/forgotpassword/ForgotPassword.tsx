@@ -2,19 +2,19 @@ import { BaseButton } from 'components/baseButton';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { validateEmail } from 'utils/helpers/validation';
-import { AuthService } from 'utils/services/AuthService';
+import { AuthService } from 'utils/services';
 import './ForgotPassword.scss';
 
 const ForgotPassword = () => {
 	const [email, setEmail] = useState<string>('');
 	const [message, setMessage] = useState<string[] | null>(null);
 	const [error, setError] = useState<string[] | null>(null);
-	const { reset } = AuthService();
+	const { resetPass } = AuthService();
 
 	const handleResetPassword = async () => {
 		if (validateEmail(email)) {
 			try {
-				await reset(email).then((res: string[] | null) => {
+				await resetPass(email).then((res: string[] | null) => {
 					if (res) {
 						setError(res);
 					} else {
@@ -23,7 +23,7 @@ const ForgotPassword = () => {
 				});
 			} catch (err) {
 				//moze się sypnąć
-				setError([err]);
+				setError([err as string]);
 			}
 		} else {
 			setError(['Email is not valid, check if You spelled it correctly..']);
