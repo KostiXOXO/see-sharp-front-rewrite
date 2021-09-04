@@ -12,6 +12,7 @@ const SectionsListItem = ({
 	handleActiveSubsection: any;
 }): JSX.Element => {
 	const [open, setOpen] = React.useState(true);
+	const [selectedId, setSelectedId] = React.useState<number | null>(null);
 
 	const handleSectionClick = () => {
 		setOpen(!open);
@@ -19,6 +20,7 @@ const SectionsListItem = ({
 
 	const handleSubsectionClick = (tutorial: Tutorial) => {
 		handleActiveSubsection(tutorial.id);
+		setSelectedId(tutorial.id);
 	};
 
 	return (
@@ -33,7 +35,12 @@ const SectionsListItem = ({
 					<List>
 						{section.tutorials.map((tutorial: Tutorial, key: any) => {
 							return (
-								<ListItem button key={key} onClick={() => handleSubsectionClick(tutorial)}>
+								<ListItem
+									button
+									key={key}
+									onClick={() => handleSubsectionClick(tutorial)}
+									selected={selectedId === tutorial.id}
+								>
 									{tutorial.name}
 								</ListItem>
 							);
