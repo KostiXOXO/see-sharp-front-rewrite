@@ -1,3 +1,4 @@
+import { red } from '@material-ui/core/colors';
 import { createTheme } from '@material-ui/core/styles';
 
 const theme = {
@@ -18,4 +19,10 @@ const materialTheme = createTheme({
 	},
 });
 
-export { theme, materialTheme };
+const selectTheme = createTheme({
+	overrides: {
+		// Style sheet name ⚛️
+		MuiList: {},
+	},
+});
+export { theme, materialTheme, selectTheme };

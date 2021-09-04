@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { get } from 'utils/web/webMethods/adapters';
 import { SectionsList } from './sectionsList';
 import { Section } from './sectionsList/common';
@@ -7,9 +7,28 @@ import { SubsectionView } from './subsectionView';
 import './TutorialsView.scss';
 import { BaseButton } from 'components/baseButton';
 
+// type TStateAction = 'DECREMENT' | 'INCREMENT';
+
+// interface IState {
+// 	type: TStateAction;
+// 	value: number | null;
+// }
+
+// const reducer = (activeSectionId: number, action: IState) => {
+// 	switch (action.type) {
+// 		case 'DECREMENT':
+// 			return (activeSectionId -= 1);
+// 		case 'INCREMENT':
+// 			return (activeSectionId += 1);
+// 		default:
+// 			return activeSectionId;
+// 	}
+// };
+
 const TutorialsView = (): JSX.Element => {
 	const [sections, setSections] = useState<Section[]>([]);
 	const [tutorial, setTutorial] = useState<Tutorial | undefined>(undefined);
+	// const [activeSectionId, dispatch] = useReducer(reducer, 0);
 
 	useEffect(() => {
 		(async () => {
@@ -21,7 +40,7 @@ const TutorialsView = (): JSX.Element => {
 	const handleActiveSubsection = (id: number) => {
 		(async () => {
 			const result = await get('/api/tutorial/' + id);
-			document.getElementById('activeSubsection')?.scrollTo(0, 0);
+			document.querySelector('.subsectionView')?.scrollTo(0, 0);
 			setTutorial(result.data);
 		})();
 	};
@@ -41,8 +60,8 @@ const TutorialsView = (): JSX.Element => {
 
 		const next = tutorial?.id + 1;
 		const cnt = sections.reduce((sum, section) => (sum = sum + section.tutorials.length), 0);
-
 		return next <= cnt ? next : null;
+		// dispatch({ type: 'INCREMENT', value: next <= cnt ? next : null });
 	};
 
 	const getPrevTutorialId = () => {
@@ -52,16 +71,15 @@ const TutorialsView = (): JSX.Element => {
 
 		const prev = tutorial?.id - 1;
 		return prev > 0 ? prev : null;
+		// dispatch({ type: 'DECREMENT', value: prev > 0 ? prev : null });
 	};
 
 	return (
-		<div className="tutorialsView">
+		<div className="tutorialsContainer">
 			<div className="sectionsList">
-				<div>
-					<SectionsList sections={sections} handleActiveSubsection={handleActiveSubsection} />
-				</div>
+				<SectionsList sections={sections} handleActiveSubsection={handleActiveSubsection} />
 			</div>
-			<div id="activeSubsection" className="subsectionView">
+			<div className="subsectionView">
 				<SubsectionView tutorial={tutorial} />
 				<div className="navButtons">
 					<div className="navButtons__prev">

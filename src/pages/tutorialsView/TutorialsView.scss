@@ -2,7 +2,7 @@
 @use 'styles/typography' as *;
 @use 'styles/colors' as *;
 
-.tutorialsView {
+.tutorialsContainer {
 	font-weight: $fw-light;
 	height: 100vh;
 	display: flex;
@@ -30,8 +30,7 @@
 			flex-direction: row;
 			padding-top: 2rem;
 
-			>div {
-
+			> div {
 				padding: 1rem;
 			}
 
