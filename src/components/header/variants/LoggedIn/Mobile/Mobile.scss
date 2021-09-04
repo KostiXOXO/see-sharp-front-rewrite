@@ -1,0 +1,11 @@
+.mobile {
+	.headerContent {
+		.navMenu {
+			div .menu {
+				display: flex;
+				flex-direction: column;
+				justify-content: left;
+			}
+		}
+	}
+}

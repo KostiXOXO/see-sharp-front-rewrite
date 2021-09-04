@@ -2,7 +2,7 @@ import { BaseButton } from 'components/baseButton';
 import React, { useReducer, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { ILoginData } from 'utils/interfaces/auth';
-import { AuthService } from 'utils/services/AuthService';
+import { AuthService } from 'services';
 import { GoogleLoginButton } from './components/googleLogin/GoogleLoginButton';
 import './Login.scss';
 

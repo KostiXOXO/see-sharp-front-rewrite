@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { LocalStorageService } from 'utils/services';
+import { LocalStorageService } from 'services';
 
 const isUserLoggedIn = () => {
 	const storage = LocalStorageService();

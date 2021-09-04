@@ -10,24 +10,24 @@ const tutorial = {
 		{
 			title: 'Single-line Comments',
 			content: `Single-line comment begins with two forward slashes ( **//** ) and applies to the end of the current line. 
-            Any text in this area is ignored by C# compiler and will not be executed.
-            
-            ~~~csharp
-            using System;
-            
-            namespace ConsoleApp1
-            {
-                class Program
-                {
-                    static void Main(string[] args)
-                    {
-                        Console.WriteLine("Hello World!"); // This is a single-line comment
-                        // This is also a single-line comment
-                    }
-                }
-            }
-        ~~~
-        `,
+Any text in this area is ignored by C# compiler and will not be executed.
+
+~~~csharp
+using System;
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!"); // This is a single-line comment
+            // This is also a single-line comment
+        }
+    }
+}
+~~~
+`,
 		},
 		{
 			title: 'Multi-line Comments',

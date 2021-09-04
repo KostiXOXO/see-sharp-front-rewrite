@@ -1,9 +1,5 @@
 import { IRegisterData, IGoogleLoginData, ILoginData, IPasswordChange } from 'utils/interfaces/auth';
-import { get, post, put } from './adapters';
-
-const getCurrentUser = async () => {
-	return await get('/api/account/me');
-};
+import { post, put } from '../adapters';
 
 const loginUser = async ({ email, password }: ILoginData) => {
 	return await post('/api/account/login', { emailAddress: email, password });
@@ -47,17 +43,4 @@ const resetPassword = async ({
 	await put('/api/account/passwordreset', data);
 };
 
-const getTutorialsList = async () => {
-	return await get('/api/tutorials');
-};
-
-export {
-	getCurrentUser,
-	registerUser,
-	loginUser,
-	loginThroughtGoogle,
-	getTutorialsList,
-	forgotPassword,
-	verifyEmail,
-	resetPassword,
-};
+export { registerUser, loginUser, loginThroughtGoogle, forgotPassword, verifyEmail, resetPassword };
