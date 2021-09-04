@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { a11yDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { default as Md } from 'react-markdown';
 import './MarkdownCompiler.scss';
 
@@ -16,8 +16,9 @@ const components = {
 		const match = /language-(\w+)/.exec(className || '');
 		return !inline && match ? (
 			<SyntaxHighlighter
-				style={a11yDark}
+				style={vscDarkPlus}
 				language={match[1]}
+				showLineNumbers
 				PreTag="div"
 				// eslint-disable-next-line react/no-children-prop
 				children={String(children).replace(/\n$/, '')}

@@ -3,7 +3,6 @@ import { List } from '@material-ui/core';
 import { Section } from './common';
 import { SectionsListItem } from './sectionsListItem';
 import './SectionsList.scss';
-import { FolderOpen } from '@material-ui/icons';
 
 const SectionsList = ({
 	sections,

@@ -10,47 +10,45 @@ import { BaseButton } from 'components/baseButton';
 const TutorialsView = (): JSX.Element => {
 	const [sections, setSections] = useState<Section[]>([]);
 	const [tutorial, setTutorial] = useState<Tutorial | undefined>(undefined);
+	const [tutorialId, setTutorialId] = useState(1);
 
 	useEffect(() => {
 		(async () => {
 			const result = await get('/api/tutorial/section');
 			setSections(result.data);
+			handleActiveSubsection(1);
 		})();
 	}, []);
 
-	const handleActiveSubsection = (id: number) => {
-		(async () => {
-			const result = await get('/api/tutorial/' + id);
-			document.getElementById('activeSubsection')?.scrollTo(0, 0);
-			setTutorial(result.data);
-		})();
+	const handleActiveSubsection = (id: number | null) => {
+		id &&
+			(async () => {
+				const result = await get('/api/tutorial/' + id);
+				document.getElementById('activeSubsection')?.scrollTo(0, 0);
+				setTutorialId(id);
+				setTutorial(result.data);
+			})();
 	};
 
 	const handlePrevBtnClick = () => {
-		handleActiveSubsection(getPrevTutorialId() ?? 1);
+		handleActiveSubsection(getPrevId());
 	};
 
 	const handleNextBtnClick = () => {
-		handleActiveSubsection(getNextTutorialId() ?? 1);
+		handleActiveSubsection(getNextId());
 	};
 
-	const getNextTutorialId = () => {
-		if (tutorial === undefined) {
-			return null;
-		}
-
-		const next = tutorial?.id + 1;
-		const cnt = sections.reduce((sum, section) => (sum = sum + section.tutorials.length), 0);
-
-		return next <= cnt ? next : null;
+	const getSectionsCnt = () => {
+		return sections.reduce((sum, section) => (sum = sum + section.tutorials.length), 0);
 	};
 
-	const getPrevTutorialId = () => {
-		if (tutorial === undefined) {
-			return null;
-		}
+	const getNextId = () => {
+		const next = tutorialId + 1;
+		return next <= getSectionsCnt() ? next : null;
+	};
 
-		const prev = tutorial?.id - 1;
+	const getPrevId = () => {
+		const prev = tutorialId - 1;
 		return prev > 0 ? prev : null;
 	};
 
@@ -65,10 +63,10 @@ const TutorialsView = (): JSX.Element => {
 				<SubsectionView tutorial={tutorial} />
 				<div className="navButtons">
 					<div className="navButtons__prev">
-						{getPrevTutorialId() && <BaseButton text=" < Previous" onClick={handlePrevBtnClick} />}
+						{getPrevId() && <BaseButton text=" < Previous" onClick={handlePrevBtnClick} />}
 					</div>
 					<div className="navButtons__next">
-						{getNextTutorialId() && <BaseButton text="Next > " onClick={handleNextBtnClick} />}
+						{getNextId() && <BaseButton text="Next > " onClick={handleNextBtnClick} />}
 					</div>
 				</div>
 			</div>
