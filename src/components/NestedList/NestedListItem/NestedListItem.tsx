@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import { NestedListItemProp } from './NestedListItemProp';
@@ -7,10 +7,10 @@ import './NestedListItem.scss';
 import { ThemeProvider } from 'utils/helpers';
 
 const NestedListItem = ({ item }: { item: NestedListItemProp }): JSX.Element => {
-	const [open, setOpen] = React.useState(true);
+	const [open, setOpen] = useState(true);
 
 	const handleClick = () => {
-		setOpen(!open);
+		setOpen((open) => !open);
 	};
 
 	return (

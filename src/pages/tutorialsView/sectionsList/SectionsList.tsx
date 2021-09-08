@@ -4,15 +4,13 @@ import { Section } from './common';
 import { SectionsListItem } from './sectionsListItem';
 import './SectionsList.scss';
 
-const SectionsList = ({
-	sections,
-	activeSubsection,
-	handleSubsectionChange,
-}: {
+interface IProps {
 	sections: Section[];
 	activeSubsection: number | null;
 	handleSubsectionChange: any;
-}): JSX.Element => {
+}
+
+const SectionsList = ({ sections, activeSubsection, handleSubsectionChange }: IProps): JSX.Element => {
 	return (
 		<div>
 			<List>
