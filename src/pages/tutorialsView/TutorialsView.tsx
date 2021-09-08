@@ -62,7 +62,7 @@ const TutorialsView = (): JSX.Element => {
 				</div>
 			</div>
 			<div id="activeSubsection" className="subsectionView">
-				<SubsectionView tutorial={tutorial} />
+				{tutorial && <SubsectionView tutorial={tutorial} />}
 				<div className="navButtons">
 					<div className="navButtons__prev">
 						{tutorial && getPrevId(tutorial?.id) && (
