@@ -6,6 +6,7 @@ import { Tutorial } from './subsectionView/common/Tutorial';
 import { SubsectionView } from './subsectionView';
 import './TutorialsView.scss';
 import { BaseButton } from 'components/baseButton';
+import { getTutorial, getTutorialsList } from 'web/webMethods/requests/tutorials';
 
 const TutorialsView = (): JSX.Element => {
 	const [sections, setSections] = useState<Section[]>([]);
@@ -13,7 +14,7 @@ const TutorialsView = (): JSX.Element => {
 
 	useEffect(() => {
 		(async () => {
-			const result = await get('/api/tutorial/section');
+			const result = await getTutorialsList();
 			setSections(result.data);
 			handleSubsectionChange(1);
 		})();
@@ -22,7 +23,7 @@ const TutorialsView = (): JSX.Element => {
 	const handleSubsectionChange = (id: number | null) => {
 		id &&
 			(async () => {
-				const result = await get('/api/tutorial/' + id);
+				const result = await getTutorial(id);
 				document.getElementById('activeSubsection')?.scrollTo(0, 0);
 				setTutorial(result.data);
 			})();

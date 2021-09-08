@@ -1,7 +1,11 @@
 import { get } from '../adapters';
 
 const getTutorialsList = async () => {
-	return await get('/api/tutorials');
+	return await get('/api/tutorial/section');
 };
 
-export { getTutorialsList };
+const getTutorial = async (id: number) => {
+	return await get(`'/api/tutorial/${id}`);
+};
+
+export { getTutorialsList, getTutorial };
