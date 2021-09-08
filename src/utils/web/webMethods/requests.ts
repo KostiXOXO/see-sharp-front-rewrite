@@ -48,7 +48,7 @@ const resetPassword = async ({
 };
 
 const getTutorialsList = async () => {
-	return await get('/api/tutorials');
+	return await get('/api/tutorial/section');
 };
 
 export {
