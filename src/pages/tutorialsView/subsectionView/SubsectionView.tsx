@@ -1,14 +1,15 @@
-import { MarkdownCompiler } from 'components/markdownCompiler';
 import React from 'react';
+import { MarkdownCompiler } from 'components/markdownCompiler';
 import { Tutorial } from './common/Tutorial';
 import './SubsectionView.scss';
 
-const SubsectionView = ({ tutorial }: { tutorial: Tutorial | undefined }) => {
+const SubsectionView = ({ tutorial }: { tutorial: Tutorial }) => {
+	const { name, description, content }: Tutorial = tutorial;
 	return (
 		<div>
-			<h3>{tutorial?.name}</h3>
-			<p className="description">{tutorial?.description}</p>
-			<MarkdownCompiler markdown={tutorial?.content ?? ''} />
+			<h3>{name}</h3>
+			<p className="description">{description}</p>
+			<MarkdownCompiler markdown={content ?? ''} />
 		</div>
 	);
 };

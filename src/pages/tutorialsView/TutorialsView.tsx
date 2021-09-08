@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { get } from 'utils/web/webMethods/adapters';
 import { SectionsList } from './sectionsList';
 import { Section } from './sectionsList/common';
@@ -6,6 +6,7 @@ import { Tutorial } from './subsectionView/common/Tutorial';
 import { SubsectionView } from './subsectionView';
 import './TutorialsView.scss';
 import { BaseButton } from 'components/baseButton';
+import { getTutorialsList } from 'utils/web/webMethods/requests';
 
 // type TStateAction = 'DECREMENT' | 'INCREMENT';
 
@@ -32,7 +33,7 @@ const TutorialsView = (): JSX.Element => {
 
 	useEffect(() => {
 		(async () => {
-			const result = await get('/api/tutorial/section');
+			const result = await getTutorialsList();
 			setSections(result.data);
 		})();
 	}, []);
@@ -80,7 +81,7 @@ const TutorialsView = (): JSX.Element => {
 				<SectionsList sections={sections} handleActiveSubsection={handleActiveSubsection} />
 			</div>
 			<div className="subsectionView">
-				<SubsectionView tutorial={tutorial} />
+				{tutorial && <SubsectionView tutorial={tutorial} />}
 				<div className="navButtons">
 					<div className="navButtons__prev">
 						{getPrevTutorialId() && <BaseButton text=" < Previous" onClick={handlePrevBtnClick} />}
