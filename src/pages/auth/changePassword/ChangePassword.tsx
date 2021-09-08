@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { validatePassword } from 'utils/helpers/validation';
 import { IPasswordChange } from 'utils/interfaces/auth';
-import { resetPassword } from 'utils/web/webMethods/requests';
+import { resetPassword } from 'web/webMethods/requests/auth';
 import './ChangePassword.scss';
 
 type TStateAction = 'SET_PASSWORD' | 'SET_PASSWORD_RETYPED';

@@ -1,4 +1,4 @@
-import { get } from 'utils/web/webMethods/adapters';
+import { get } from 'web/webMethods/adapters';
 import { MarkdownCompiler } from 'components/markdownCompiler';
 import React, { useEffect, useState } from 'react';
 import './Test.scss';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useGoogleLogin } from 'react-google-login';
-import { clientId } from './config';
+import { clientId } from 'utils/configs/google';
 import { logInWithGoogle } from './logInWithGoogle';
 import GoogleLogo from 'assets/google.svg';
 

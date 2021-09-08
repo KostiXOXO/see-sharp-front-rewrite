@@ -1,7 +1,7 @@
 import { BaseButton } from 'components/baseButton';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { verifyEmail } from 'utils/web/webMethods/requests';
+import { verifyEmail } from 'web/webMethods/requests/auth';
 import './VerifyEmail.scss';
 
 const VerifyEmail = () => {

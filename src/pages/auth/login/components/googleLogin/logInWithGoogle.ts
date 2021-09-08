@@ -1,8 +1,8 @@
 import { useHistory } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-import { loginThroughtGoogle } from 'utils/web/webMethods/requests';
+import { loginThroughtGoogle } from 'web/webMethods/requests/auth';
 import { userLoginData } from 'utils/store/atoms';
-import { LocalStorageService } from 'utils/services';
+import { LocalStorageService } from 'services';
 
 const logInWithGoogle = () => {
 	const [userData, setUserData] = useRecoilState(userLoginData);
