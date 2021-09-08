@@ -6,21 +6,21 @@ import './SectionsListItem.scss';
 
 const SectionsListItem = ({
 	section,
-	handleActiveSubsection,
+	selectedId,
+	handleSubsectionChange,
 }: {
 	section: Section;
-	handleActiveSubsection: any;
+	selectedId: number | null;
+	handleSubsectionChange: any;
 }): JSX.Element => {
 	const [open, setOpen] = React.useState(true);
-	const [selectedId, setSelectedId] = React.useState<number | null>(null);
 
 	const handleSectionClick = () => {
 		setOpen(!open);
 	};
 
 	const handleSubsectionClick = (tutorial: Tutorial) => {
-		handleActiveSubsection(tutorial.id);
-		setSelectedId(tutorial.id);
+		handleSubsectionChange(tutorial.id);
 	};
 
 	return (

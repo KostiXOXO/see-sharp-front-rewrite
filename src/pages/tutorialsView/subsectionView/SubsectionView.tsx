@@ -3,7 +3,7 @@ import React from 'react';
 import { Tutorial } from './common/Tutorial';
 import './SubsectionView.scss';
 
-const SubsectionView = ({ tutorial }: { tutorial: Tutorial | undefined }) => {
+const SubsectionView = ({ tutorial }: { tutorial: Tutorial | null }) => {
 	return (
 		<div>
 			<h3>{tutorial?.name}</h3>

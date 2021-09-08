@@ -6,17 +6,24 @@ import './SectionsList.scss';
 
 const SectionsList = ({
 	sections,
-	handleActiveSubsection,
+	activeSubsection,
+	handleSubsectionChange,
 }: {
 	sections: Section[];
-	handleActiveSubsection: any;
+	activeSubsection: number | null;
+	handleSubsectionChange: any;
 }): JSX.Element => {
 	return (
 		<div>
 			<List>
 				{sections.map((section, key) => {
 					return (
-						<SectionsListItem key={key} section={section} handleActiveSubsection={handleActiveSubsection} />
+						<SectionsListItem
+							key={key}
+							section={section}
+							selectedId={activeSubsection}
+							handleSubsectionChange={handleSubsectionChange}
+						/>
 					);
 				})}
 			</List>
