@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { INavRoute } from 'utils/interfaces/route';
+import './NavMenu.scss';
 
 interface IProps {
 	routes: INavRoute[];

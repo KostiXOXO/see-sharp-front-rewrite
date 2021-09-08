@@ -1,13 +1,41 @@
+@use 'styles/colors' as *;
+
 .desktop {
 	.headerContent {
 		.navMenu {
 			display: flex;
-			gap: 2rem;
+			gap: 6.5rem;
 
+			display: flex;
+			flex-direction: row;
+			align-items: center;
 			.menu {
+				.active {
+					text-shadow: 1px 1px 2px #fff, 0 0 25px $clr-primary-light, 0 0 5px #fff !important;
+				}
 				display: flex;
-				gap: 1rem;
+				flex-direction: row;
 				align-items: center;
+				height: 100%;
+				.linkItem {
+					margin-right: 2rem;
+				}
+				&__item {
+					cursor: pointer;
+					& > div {
+						margin-right: 4rem;
+					}
+
+					&__link {
+						color: #fff;
+						&::after {
+							position: absolute;
+							margin-left: 1rem;
+							transform: rotate(90deg);
+							content: '\276F';
+						}
+					}
+				}
 			}
 		}
 	}
