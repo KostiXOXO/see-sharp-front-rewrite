@@ -5,7 +5,7 @@ const getTutorialsList = async () => {
 };
 
 const getTutorial = async (id: number) => {
-	return await get(`'/api/tutorial/${id}`);
+	return await get(`/api/tutorial/${id}`);
 };
 
 export { getTutorialsList, getTutorial };
