@@ -1,5 +1,5 @@
-import { MarkdownCompiler } from 'components/markdownCompiler';
 import React from 'react';
+import { MarkdownCompiler } from 'components/markdownCompiler';
 import { Tutorial } from './common/Tutorial';
 import './SubsectionView.scss';
 

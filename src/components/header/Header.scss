@@ -2,6 +2,9 @@
 @use 'styles/colors' as *;
 @use 'styles/variables' as *;
 
+nav {
+	background: transparent;
+}
 .navigationBar {
 	height: $headerHeight;
 	min-height: 5rem;
@@ -14,7 +17,7 @@
 		height: 100%;
 
 		position: sticky;
-		z-index: 100;
+		z-index: 1;
 
 		background: $clr-primary-dark;
 		padding: 1rem;

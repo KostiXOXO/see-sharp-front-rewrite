@@ -1,7 +1,11 @@
 .app {
 	&__header {
+		position: sticky;
+		max-height: 8rem !important;
+		background: transparent;
+		box-shadow: 0 -2px 10px 1px #fff;
+		background: linear-gradient(to right, #010a09, #051f1e);
 	}
 	&__body {
-		max-height: 90vh;
 	}
 }

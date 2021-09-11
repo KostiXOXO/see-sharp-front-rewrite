@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { Redirect, Route, RouteComponentProps, Switch, useHistory } from 'react-router-dom';
-import { LocalStorageService } from 'services';
+import { Route, RouteComponentProps, Switch, useHistory } from 'react-router-dom';
 import { getCurrentUser } from 'web/webMethods/requests/users';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { userLoginData } from 'utils/store/atoms';
@@ -11,32 +10,33 @@ import { useToken } from 'utils/hooks/useAuthToken';
 import './Router.scss';
 
 const RouterSwitch = ({ children }: { children?: JSX.Element }): JSX.Element => {
-	const storage = LocalStorageService();
+	const history = useHistory();
+
+	const { isLoggedIn } = useRecoilValue(userLoginData);
 	const [userData, setUserData] = useRecoilState(userLoginData);
 	const [token] = useToken();
-	const { isLoggedIn, username } = useRecoilValue(userLoginData);
 
-	const history = useHistory();
 	useEffect(() => {
 		(async () => {
-			const token = storage.get('authToken');
 			if (token) {
 				const { data } = await getCurrentUser();
-				return setUserData(
+				console.log(data);
+				setUserData(
 					Object.assign({}, userData, {
 						isLoggedIn: true,
 						username: data,
 					})
 				);
+				return history.push('/tutorials');
 			}
-			return <Redirect to="/" />;
+			return history.push('/');
 		})();
 	}, []);
 
 	return (
 		<div className="app">
 			<div className="app__header">
-				{history.location.pathname !== '/' && <Header isUserLoggedIn={isLoggedIn} />}
+				<Header isUserLoggedIn={isLoggedIn} />
 			</div>
 			<div className="app__body">
 				<Switch>
