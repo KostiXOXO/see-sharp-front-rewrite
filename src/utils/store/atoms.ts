@@ -8,3 +8,10 @@ export const userLoginData = atom({
 		JWT: '',
 	},
 });
+
+export const locationData = atom({
+	key: 'locationData',
+	default: {
+		isHome: !!(location.pathname === '/'),
+	},
+});

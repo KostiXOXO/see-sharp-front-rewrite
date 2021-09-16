@@ -7,6 +7,7 @@ import { Test } from 'pages/tutorialsView/Test/Test';
 import { ForgotPassword } from 'pages/auth/forgotpassword/ForgotPassword';
 import { VerifyEmail } from 'pages/auth/verifyEmail/VerifyEmail';
 import { ChangePassword } from 'pages/auth/changePassword/ChangePassword';
+import { Excercise } from 'pages/excercises/Excercise';
 
 const routes: IRoute[] = [
 	{
@@ -68,7 +69,7 @@ const routes: IRoute[] = [
 	{
 		path: '/excercises/:exID',
 		exact: true,
-		component: TutorialsView,
+		component: Excercise,
 		name: 'Excercise Page',
 		protected: true,
 	},

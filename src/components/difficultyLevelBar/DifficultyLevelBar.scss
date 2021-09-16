@@ -1,0 +1,39 @@
+@import 'styles/colors';
+@import 'styles/variables';
+
+.level {
+	display: flex;
+	flex-direction: row;
+	@media only screen and (max-width: $mobileScreen) {
+		flex-direction: column;
+	}
+
+	& > * {
+		width: 1.5rem;
+		height: 1.5rem;
+		border: 0.1rem solid $clr-primary-light;
+		border-radius: 50%;
+		margin-left: 0.15rem;
+	}
+	&__empty {
+		color: #fff;
+	}
+
+	&__half {
+		background: $clr-primary-light;
+		overflow: hidden;
+		// @media only screen and (max-width: $mobileScreen) {
+		// 	transform: rotate(90deg);
+		// }
+		&__sep {
+			width: 1.5rem;
+			height: 1.5rem;
+			transform: translate(50%);
+			background-color: #fff;
+		}
+	}
+
+	&__full {
+		background: $clr-primary-light;
+	}
+}

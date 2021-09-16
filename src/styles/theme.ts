@@ -18,4 +18,5 @@ const materialTheme = createTheme({
 	},
 });
 
+export const clrConsole = '#2f4858';
 export { theme, materialTheme };

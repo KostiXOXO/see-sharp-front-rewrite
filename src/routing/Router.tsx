@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Route, RouteComponentProps, Switch, useHistory } from 'react-router-dom';
 import { getCurrentUser } from 'web/webMethods/requests/users';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { userLoginData } from 'utils/store/atoms';
+import { userLoginData, locationData } from 'utils/store/atoms';
 import { routes } from '.';
 import { PrivateRoute } from 'web/routeExtensions/PrivateRoute';
 import { Header } from 'components/header';
@@ -20,16 +20,16 @@ const RouterSwitch = ({ children }: { children?: JSX.Element }): JSX.Element => 
 		(async () => {
 			if (token) {
 				const { data } = await getCurrentUser();
-				console.log(data);
 				setUserData(
 					Object.assign({}, userData, {
 						isLoggedIn: true,
 						username: data,
 					})
 				);
-				return history.push('/tutorials');
+				// return history.push('/tutorials');
+				return;
 			}
-			return history.push('/');
+			return;
 		})();
 	}, []);
 

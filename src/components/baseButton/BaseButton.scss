@@ -45,14 +45,14 @@
 		border-radius: $border-radius * 2;
 	}
 	&.outlined {
-		background: linear-gradient(to bottom, $clr-primary-dark, $clr-primary-light);
 		border: 1px solid $clr-text-light;
 		color: $clr-text-light;
+		border: 1px solid $clr-text-light;
 	}
 	&.filled {
-		background: linear-gradient($clr-primary-dark, $clr-primary-light);
-		color: $clr-text-light;
+		background: linear-gradient(to bottom, $clr-primary-dark, $clr-primary-light);
 		box-shadow: 0 0 1em $clr-text-placeholder;
+		color: $clr-text-light;
 	}
 	&.none {
 		display: none;
@@ -60,5 +60,6 @@
 
 	&.icon {
 		font-size: 10px;
+		// min-height: 10px;
 	}
 }

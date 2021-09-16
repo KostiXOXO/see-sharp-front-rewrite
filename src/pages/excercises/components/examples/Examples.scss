@@ -1,0 +1,9 @@
+.examplesContainer {
+	.example {
+		display: flex;
+		gap: 1rem;
+		& > div {
+			min-width: 20ch;
+		}
+	}
+}

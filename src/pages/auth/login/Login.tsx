@@ -1,10 +1,14 @@
 import { BaseButton } from 'components/baseButton';
-import React, { useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { ILoginData } from 'utils/interfaces/auth';
 import { AuthService } from 'services';
 import { GoogleLoginButton } from './components/googleLogin/GoogleLoginButton';
 import './Login.scss';
+import { useRecoilState } from 'recoil';
+import { userLoginData } from 'utils/store/atoms';
+import { getCurrentUser } from 'web/webMethods/requests/users';
+import { useIsHome } from 'utils/hooks/useIsHome';
 
 type TStateAction = 'SET_EMAIL' | 'SET_PASSWORD';
 
@@ -31,16 +35,31 @@ const reducer = (state = initialFormState, action: IState) => {
 
 const Login = (): JSX.Element => {
 	const { login } = AuthService();
+	const { isHome } = useIsHome();
+
 	const history = useHistory();
 	const [state, dispatch] = useReducer(reducer, initialFormState);
 
 	const [message, setMessage] = useState<string[] | null>(null);
+	const [userData, setUserData] = useRecoilState(userLoginData);
 
 	const loginWithEmail = async ({ email, password }: ILoginData) => {
 		setMessage(null);
 		await login({ email, password })
-			.then(() => history.push('/'))
-			.catch(() => {
+			.then(async (token) => {
+				const { data } = await getCurrentUser();
+				setUserData(
+					Object.assign({}, userData, {
+						isLoggedIn: true,
+						username: data,
+						JWT: token,
+					})
+				);
+
+				history.push('/tutorials');
+			})
+			.catch((err) => {
+				console.log(err);
 				setMessage(['Invalid email or password']);
 			});
 	};
@@ -48,7 +67,9 @@ const Login = (): JSX.Element => {
 	const handleLogin = () => {
 		loginWithEmail({ email: state.email, password: state.password });
 	};
-
+	useEffect(() => {
+		console.log(userData);
+	}, [userData]);
 	return (
 		<div className="login">
 			<div className="mainFrame">

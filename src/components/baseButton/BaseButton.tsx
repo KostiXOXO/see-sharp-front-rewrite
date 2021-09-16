@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 
 const BaseButton = ({
 	onClick,
-	text,
+	text = '',
 	type = 'rounded',
 	size = 'medium',
-	style = 'outlined',
-	// icon,
+	style = 'filled',
+	icon,
 	additionalClass,
 	linkTo,
 	disabled,
@@ -22,8 +22,8 @@ const BaseButton = ({
 				disabled={disabled}
 				onClick={onClick}
 			>
-				{/* {<span>{[icon, text]}</span>} */}
-				{<span>{text}</span>}
+				{<span>{[icon, text]}</span>}
+				{/* {<span>{text}</span>} */}
 			</button>
 		</Link>
 	) : (
@@ -32,8 +32,8 @@ const BaseButton = ({
 			disabled={disabled}
 			onClick={onClick}
 		>
-			{/* {<span>{[icon, text]}</span>} */}
-			{<span>{text}</span>}
+			{<span>{[icon, text]}</span>}
+			{/* {<span>{text}</span>} */}
 		</button>
 	);
 };

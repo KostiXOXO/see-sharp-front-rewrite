@@ -5,11 +5,10 @@ export const StyledMenuMobile = styled('div')<{ open: boolean }>`
 	background: linear-gradient(to bottom, #e8f3f1, #fff, #fff);
 	min-width: 16rem;
 	position: absolute;
-	top: max(8vh, 5rem);
+	top: 80px;
 	left: 0;
 	transition: transform 0.3s ease-in-out;
 	height: max(calc(100vh - 5rem), 92vh);
-
 	@media (max-width: ${({ theme }) => theme.mobile}) {
 		width: 80vw;
 	}

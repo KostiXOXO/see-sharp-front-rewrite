@@ -5,14 +5,15 @@
 
 .tutorialsView {
 	font-weight: $fw-light;
-	height: $contentHeight;
 	display: flex;
 	flex: 1 1 100%;
 	gap: 1rem;
+	height: $contentHeight;
 
 	.sectionsList {
 		background: $clr-subsection;
 		@include customScroll();
+		min-width: 15vw;
 		max-width: 20vw;
 	}
 
@@ -29,10 +30,10 @@
 		.navButtons {
 			display: flex;
 			flex-direction: row;
-			padding: 2rem;
+			padding: 2rem 0;
 
 			& > div {
-				padding: 1rem;
+				padding: 0 1rem;
 			}
 
 			&__prev {

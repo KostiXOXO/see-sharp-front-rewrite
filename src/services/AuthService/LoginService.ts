@@ -9,7 +9,7 @@ async function Login({ email, password }: ILoginData): Promise<string | null> {
 
 	if (loginResponseData.status === 200) {
 		localStorage.set('authToken', token);
-		return null;
+		return token;
 	}
 	//w body response jest wiaodmość że invalid username or pass ale już post do serwera throwuje error i kończy wywołanie funkcji, jak
 

@@ -1,0 +1,88 @@
+@use 'styles/variables' as *;
+@use 'styles/colors' as *;
+
+.excerciseContainer {
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	max-width: 1200px;
+	.excercise {
+		display: grid;
+		grid-template-columns: 1.5fr 1.5fr 1fr;
+		grid-template-rows: max-content max-content max-content 0.3fr;
+		gap: 2rem;
+		grid-auto-flow: row;
+		grid-template-areas:
+			'body body info'
+			'body body .'
+			'examples examples .'
+			'rating . callToAction';
+	}
+
+	.excercise {
+		&__info,
+		&__body,
+		&__rating,
+		&__callToAction {
+			display: flex;
+			gap: 1rem;
+		}
+	}
+
+	.excercise__info {
+		grid-area: info;
+		flex-direction: column;
+
+		& > * {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		& > .creationDate {
+			color: $clr-text-placeholder;
+			font-size: 0.7rem;
+			display: flex;
+			// justify-content: center;
+		}
+		& > .difficulty {
+			@media only screen and (max-width: ($mobileScreen)) {
+				align-items: flex-start;
+			}
+		}
+	}
+
+	.excercise__body {
+		grid-area: body;
+		flex-direction: column;
+		max-width: 1000px;
+		align-items: flex-start;
+		padding-right: 2rem;
+	}
+
+	.excercise__examples {
+		grid-area: examples;
+		max-width: 1000px;
+		display: flex;
+		flex: 1 0 100%;
+		flex-wrap: wrap;
+	}
+
+	.excercise__rating {
+		grid-area: rating;
+		align-items: flex-end;
+
+		& > div {
+			display: flex;
+			align-items: center;
+		}
+	}
+
+	.excercise__callToAction {
+		grid-area: callToAction;
+		flex-direction: column;
+		align-items: flex-end;
+		// word-break: break-all;
+	}
+}

@@ -1,27 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import logo from 'assets/logo.svg';
 import { NavLink } from 'react-router-dom';
 import { BaseButton } from 'components/baseButton';
-import { useHistory } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { userLoginData } from 'utils/store/atoms';
+import { useIsHome } from 'utils/hooks/useIsHome';
 import './NotLoggedIn.scss';
 
 const NotLoggedIn = () => {
-	const { location } = useHistory();
-	const [isHome, setIsHome] = useState<boolean>(location.pathname === '/');
-
-	useEffect(() => {
-		console.log(location.pathname);
-		setIsHome(location.pathname === '/');
-	}, [location.pathname]);
+	const { isLoggedIn } = useRecoilValue(userLoginData);
+	const { isHome } = useIsHome();
 
 	return (
-		<div className={['navigationBar notloggedIn', isHome ? 'home' : ''].join(' ')}>
+		<div className={['navigationBar notloggedIn', !isLoggedIn && isHome ? 'home' : ''].join(' ')}>
 			<div className="headerContent">
 				<NavLink className="linkItem" to="/">
 					<img className="logo" src={logo} />
 				</NavLink>
 				<div className="headerContentNotLogged">
-					<BaseButton text="Sign In" linkTo="/login" />
+					<BaseButton text="Sign In" linkTo="/login" style="outlined" />
 				</div>
 			</div>
 		</div>

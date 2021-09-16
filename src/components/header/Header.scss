@@ -4,19 +4,18 @@
 
 nav {
 	background: transparent;
+	height: inherit;
 }
 .navigationBar {
-	height: $headerHeight;
-	min-height: 5rem;
 	width: 100vw;
+	height: inherit;
 
 	.headerContent {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		height: 100%;
+		height: inherit;
 
-		position: sticky;
 		z-index: 1;
 
 		background: $clr-primary-dark;

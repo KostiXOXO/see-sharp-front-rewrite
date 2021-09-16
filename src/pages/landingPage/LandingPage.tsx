@@ -1,8 +1,11 @@
 import React from 'react';
 import { MainFrame } from './MainFrame';
+import { useIsHome } from 'utils/hooks/useIsHome';
 import './LandingPage.scss';
 
 const LandingPage = (): JSX.Element => {
+	const { isHome } = useIsHome();
+
 	return (
 		<main className="landingPage">
 			<MainFrame />
