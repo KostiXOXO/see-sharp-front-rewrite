@@ -7,6 +7,7 @@ import { Test } from 'pages/tutorialsView/Test/Test';
 import { ForgotPassword } from 'pages/auth/forgotpassword/ForgotPassword';
 import { VerifyEmail } from 'pages/auth/verifyEmail/VerifyEmail';
 import { ChangePassword } from 'pages/auth/changePassword/ChangePassword';
+import { ExercisesList } from 'pages/exercises/exercisesList/ExercisesList';
 
 const routes: IRoute[] = [
 	{
@@ -59,10 +60,10 @@ const routes: IRoute[] = [
 		protected: true,
 	},
 	{
-		path: '/excercises',
+		path: '/exercises',
 		exact: true,
-		component: TutorialsView,
-		name: 'Excercises Page',
+		component: ExercisesList,
+		name: 'Exercises Page',
 		protected: true,
 	},
 	{

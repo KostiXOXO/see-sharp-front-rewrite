@@ -6,8 +6,8 @@ export const routes: INavRoute[] = [
 		text: 'Tutorials',
 	},
 	{
-		path: '/excercises',
-		text: 'Excercises',
+		path: '/exercises',
+		text: 'Exercises',
 	},
 	{
 		path: '/classrooms',
